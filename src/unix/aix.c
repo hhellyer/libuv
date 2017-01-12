@@ -932,7 +932,7 @@ int uv_set_process_title(const char* title) {
   /* If this is the first time this is set,
    * don't free and set argv[1] to NULL.
    */
-  size_t len = 0;
+  size_t len;
   if (process_title_ptr != NULL)
     uv__free(process_title_ptr);
 
@@ -954,7 +954,7 @@ int uv_set_process_title(const char* title) {
 
 
 int uv_get_process_title(char* buffer, size_t size) {
-  size_t len = 0;
+  size_t len;
   if (buffer == NULL || size == 0)
     return -EINVAL;
   else if (size <= strlen(process_argv[0]))
